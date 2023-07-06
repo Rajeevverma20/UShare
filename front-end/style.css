@@ -1,0 +1,246 @@
+:root{
+    --main-bg-color: #eff5fe;
+    --light-blue: #03a9f4;
+    --border-color: #0288d147; 
+    --conatiner-width:  500px
+}
+body, html{
+    font-family: system-ui;
+    background: var(--main-bg-color);
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    
+}
+body, .drop-zone, .upload-conatiner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+body{
+    flex-direction: row;
+}
+.upload-conatiner{
+    background: #ffffff;
+    border-radius: 25px;
+    box-shadow: 0px 20px 20px #0000002e;
+}
+.drop-zone{
+    width: var(--conatiner-width);
+    min-height:200px;
+    border: 2px dashed var(--border-color);
+     margin: 30px;
+     border-radius: 10px;
+     transition: all .2s ease;
+}
+
+.dragged.drop-zone{
+    background: var(--main-bg-color);
+    border-color: #2196f3;
+}
+.icon-container{
+    width: 75px;
+    height: 100px;
+    position: relative;
+}
+.icon-container img{
+ width:75px;
+ position: absolute;
+ transform-origin: bottom;
+ transition: transform 250ms ease-in-out;
+}
+.icon-container .center{
+    z-index: 2;
+}
+.icon-container .right, .icon-container .left{
+    filter: grayscale(.5);
+    transform: scale(.9);
+}
+
+.dragged .icon-container .right{
+    transform: rotate(10deg) translateX(20px) scale(.9);
+    
+}
+
+
+.dragged .icon-container .left{
+    transform: rotate(-10deg) translateX(-20px) scale(.9);
+    
+}
+.dragged .icon-container .center{
+    transform: translateY(-5px);
+}
+
+#fileInput{
+    display: none;
+}
+
+.browseBtn{
+    color: #2196f3;
+    cursor: pointer;
+}
+
+.progress-conatiner{
+    width : var(--conatiner-width);
+    height: 70px;
+    border: 2px solid var(--main-bg-color);
+    margin-bottom: 25px;
+    border-radius: 10px;
+    position: relative;
+    display: none;
+}
+
+.progress-conatiner .bg-progress{
+    background: var(--main-bg-color);
+    width: 0%;
+    height:100%;
+    border-radius: 3%;
+    
+    transition:  width .25s linear;
+    position: absolute;
+    
+}
+
+.progress-conatiner .inner-conatiner{
+    position: absolute;
+    z-index: 1;
+    margin: 10px 15px;
+    width: calc(100% - 30px);
+}
+
+.percent-conatiner{
+    font-size: 13px;
+    margin: 5px;
+    opacity: .8;
+}
+
+.progress-bar{
+    height: 3px;
+    width: 100%;
+    background: #039af4;
+    border-radius: 2px;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition:  transform .25s linear;
+}
+
+.sharing-container{
+    width: var(--conatiner-width);
+    margin-bottom: 20px;
+    display: none;
+}
+
+p.expire{
+    opacity: .7;
+    text-align: center;
+}
+
+.sharing-container .input-container{
+    position: relative;
+}
+
+.sharing-container .input-container input{
+    width: 100%;
+    border: 2px dashed var(--border-color);
+    border-radius: 6px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    font-size: 20px;
+    background: #f5fcff;
+    color: #0000008c;
+}
+
+.input-container img{
+    position: absolute;
+    height: 22px;
+    width: 30px;
+    right: 7px;
+    top: 12px;
+    background: #f7fdff;
+    cursor: pointer;
+}
+
+.email-conatiner{
+    display: flex;
+    align-items: center;
+   
+}
+
+.email-conatiner form{
+    width: 100px;
+    border: 2px solid --border-color;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.email-conatiner .field{
+    display: flex;
+    justify-content:  space-between;
+    margin-bottom: 5px;
+    width: 400px;
+}
+
+.email-conatiner label{
+    font-size: 18px;
+}
+
+.email-conatiner input{
+    font-size: 18px;
+    border: none;
+    border-bottom: 2px solid var(--border-color);
+    text-align:  center;
+}
+
+.email-conatiner input:focus{
+    outline: none;
+}
+
+.email-conatiner button{
+    font-size: 18px;
+    padding: 8px 40px;
+    margin-top: 15px;
+    background: var(--main-bg-color);
+    border: none;
+    border-radius: 5px;
+    color: #607d8b;
+    cursor: pointer;
+}
+
+.toast{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%, 60px);
+    padding: 10px 20px;
+    border-radius: 5px;
+    background: #03a9f4;
+    color: #fff;
+    font-size: 18px;
+    transition:  transform ease-in-out 0.2s;
+    box-shadow: 0px 10px 15px 3px rgba(0,0,0,0.1) , 0px 4px 6px -2px rgba(0.0.0.0.05) ;
+}
+
+.upload-vector{
+    background: url(./upload.svg) no-repeat center;
+    background-size: contain;
+    height: 50vh;
+    width: 50vw;
+}
+
+@media screen and (max-width: 900px) {
+    :root{
+         --container-width: 320px;
+    }
+    .upload-vector{
+        display: none;
+    }
+    .email-conatiner .field{
+        flex-direction: column;
+        width: 300px;
+    }
+}
