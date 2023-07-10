@@ -24,7 +24,7 @@
   "devDependencies": {
     "nodemon": "^2.0.22"
   },
-  “name”: “UShare”,
- “author”: “Rajeev Verma”,
-  “description”: “”
+  "name": "UShare",
+ "author": "Rajeev Verma",
+  "description": ""
 }
